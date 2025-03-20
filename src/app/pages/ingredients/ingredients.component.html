@@ -1,0 +1,46 @@
+<h1>hello</h1>
+<!-- src/app/pages/recettes/recettes.component.html -->
+<div class="container">
+  <h2 class="my-4">Liste des Ingredients</h2>
+  <div class="row">
+    <!-- Pour chaque ingrédient, crée une colonne avec une card -->
+    <div class="col-md-4">
+      <table class="table table-bordered table-striped mt-3">
+        <thead class="table-dark" >
+          <tr>
+            <th>ID</th>
+            <th>Nom</th>
+            <th>Ingredient INS</th>
+            <th>Ingredient lode</th>
+            <th>Ingredient Sapo.</th>
+            <th>Vol Mousse</th>
+            <th>Tenue Mousse</th>
+            <th>Douceur</th>
+            <th>Lavant</th>
+            <th>Duretée</th>
+            <th>Solubilité</th>
+            <th>Séchage</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let ingredient of ingredients">
+            <td>{{ingredient.id}}</td>
+            <td>{{ingredient.nom}}</td>
+            <td>{{ingredient.ins}}</td>
+            <td>{{ingredient.iode}}</td>
+            <td>{{ingredient.sapo}}</td>
+            <td>{{ingredient.volMousse}}</td>
+            <td>{{ingredient.tenueMousse}}</td>
+            <td>{{ingredient.douceur}}</td>
+            <td>{{ingredient.lavant}}</td>
+            <td>{{ingredient.durete}}</td>
+            <td>{{ingredient.solubilite}}</td>
+            <td>{{ingredient.sechage}}</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+ 

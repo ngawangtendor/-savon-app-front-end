@@ -1,0 +1,34 @@
+<!-- src/app/pages/recettes/recettes.component.html -->
+<div class="container" _ngcontent-ng-c3231040852="">
+  <h2 class="my-4">Liste des Recettes</h2>
+  <div class="row" _ngcontent-ng-c3231040852="">
+    <!-- Pour chaque ingrédient, crée une colonne avec une card -->
+    <div class="col-md-4"  _ngcontent-ng-c3231040852="">
+      <table class="table table-bordered table-striped mt-3" _ngcontent-ng-c3231040852="">
+        <thead class="table-dark" _ngcontent-ng-c3231040852="">
+          <tr _ngcontent-ng-c3231040852="">
+            <th _ngcontent-ng-c3231040852="">ID</th>
+            <th _ngcontent-ng-c3231040852="">Nom</th>
+            <th _ngcontent-ng-c3231040852="">Description</th>
+            <th _ngcontent-ng-c3231040852="">Surgraissage (%)</th>
+            <th _ngcontent-ng-c3231040852="">Apport Eau (g)</th>
+            <th _ngcontent-ng-c3231040852="">Agent Alcalin</th>
+            <th _ngcontent-ng-c3231040852="">Qté alcalin</th>
+          </tr>
+        </thead>
+        <tbody _ngcontent-ng-c3231040852="">
+          <tr  *ngFor="let recette of recettes" _ngcontent-ng-c3231040852="">
+            <td _ngcontent-ng-c3231040852>{{recette.id}}</td>
+            <td _ngcontent-ng-c3231040852>{{recette.titre}}</td>
+            <td _ngcontent-ng-c3231040852 >{{recette.description}}</td>
+            <td _ngcontent-ng-c3231040852 >{{recette.surgraissage}}</td>
+            <td _ngcontent-ng-c3231040852>{{recette.apportEnEau}}</td>
+            <td _ngcontent-ng-c3231040852>{{recette.avecSoude}}</td>
+            <td _ngcontent-ng-c3231040852>{{recette.qteAlcalin}}</td>
+          </tr>
+        </tbody>
+      </table>
+
+    </div>
+  </div>
+</div>

@@ -1,0 +1,49 @@
+<form>
+      <div>
+        <label for="nom">Nom :</label>
+        <input id="nom" type="text" [(ngModel)]="ingredient.nom" name="nom">
+      </div>
+      <div>
+        <label for="ins">INS :</label>
+        <input id="ins" type="number" [(ngModel)]="ingredient.ins" name="ins">
+      </div>
+      <div>
+        <label for="iode">Iode :</label>
+        <input min="0" max="10" id="iode" type="number" [(ngModel)]="ingredient.iode" name="iode">
+      </div>
+      <div>
+        <label for="sapo">SAPO :</label>
+        <input id="sapo" type="number" [(ngModel)]="ingredient.sapo" name="sapo">
+      </div>
+      <div>
+        <label for="volMousse">Volume de mousse :</label>
+        <input id="volMousse" type="number" [(ngModel)]="ingredient.volMousse" name="volMousse">
+      </div>
+      <div>
+        <label for="tenueMousse">Tenue de mousse :</label>
+        <input id="tenueMousse" type="number" [(ngModel)]="ingredient.tenueMousse" name="tenueMousse">
+      </div>
+      <div>
+        <label for="douceur">Douceur :</label>
+        <input id="douceur" type="number" [(ngModel)]="ingredient.douceur" name="douceur">
+      </div>
+      <div>
+        <label for="lavant">Pouvoir lavant :</label>
+        <input id="lavant" type="number" [(ngModel)]="ingredient.lavant" name="lavant">
+      </div>
+      <div>
+        <label for="durete">Dureté :</label>
+        <input id="durete" type="number" [(ngModel)]="ingredient.durete" name="durete">
+      </div>
+      <div>
+        <label for="solubilite">Solubilité :</label>
+        <input id="solubilite" type="number" [(ngModel)]="ingredient.solubilite" name="solubilite">
+      </div>
+      <div>
+        <label for="sechage">Séchage :</label>
+        <input id="sechage" type="number" [(ngModel)]="ingredient.sechage" name="sechage">
+      </div>
+        <br>
+    <button type="submit" (click)="submitIngredient()">Enregistrer</button>
+</form>
+ 
