@@ -12,7 +12,7 @@ export class IngredientService {
 
   // Récupère tous les ingrédients depuis l'API
   getAllIngredient(): Observable<Ingredient[]> {
-    return this.http.get<Ingredient[]>(`${this.apiUrl}/ingredient`);
+    return this.http.get<Ingredient[]>(`${this.apiUrl}`);
   }
 
   getIngredientById(id: number): Observable<Ingredient> {
@@ -20,7 +20,7 @@ export class IngredientService {
   }
 
   postIngredient(ingredient: Ingredient): Observable<Ingredient> {
-    return this.http.post<Ingredient>(`${this.apiUrl}/ingredient`, ingredient);
+    return this.http.post<Ingredient>(`${this.apiUrl}`, ingredient);
   }
 
   addIngredient(ingredient: Ingredient): Observable<Ingredient> {
