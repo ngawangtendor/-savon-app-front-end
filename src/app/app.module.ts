@@ -19,6 +19,8 @@ import { IngredientManagerPageComponent } from './pages/ingredient-manager-page/
 import { ModalBoxConfirmationComponent } from './shared/modal-box-confirmation/modal-box-confirmation.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { RadarChartComponent } from './shared/radar-chart/radar-chart.component';
+import { ModalIngredientPickerComponent } from './shared/modal-ingredient-picker/modal-ingredient-picker.component';
+import { RecetteCalculatorComponent } from './pages/recette-calculator/recette-calculator.component';
 
 
 @NgModule({
@@ -36,7 +38,9 @@ import { RadarChartComponent } from './shared/radar-chart/radar-chart.component'
     IngredientImportExportComponent,
     IngredientManagerPageComponent,
     ModalBoxConfirmationComponent,
-    RadarChartComponent
+    RadarChartComponent,
+    ModalIngredientPickerComponent,
+    RecetteCalculatorComponent
   ],
   imports: [
     BrowserModule,

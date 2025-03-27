@@ -5,6 +5,7 @@ import { PrivacyPolicyComponent } from './pages/privacy-policy/privacy-policy.co
 import { RecettesComponent } from './pages/recettes/recettes.component';
 import { IngredientCreateComponent } from './pages/ingredient-create/ingredient-create.component';
 import { IngredientManagerPageComponent } from './pages/ingredient-manager-page/ingredient-manager-page.component';
+import { RecetteCalculatorComponent } from './pages/recette-calculator/recette-calculator.component';
 
 
 const routes: Routes = [
@@ -12,7 +13,8 @@ const routes: Routes = [
   { path: 'confidentialite', component: PrivacyPolicyComponent },
   { path: 'recettes', component: RecettesComponent},
   { path: 'ingredients-create', component: IngredientCreateComponent}, 
-  { path: 'ingredients-manager', component: IngredientManagerPageComponent}
+  { path: 'ingredients-manager', component: IngredientManagerPageComponent},
+  { path: 'calculateur-recette', component : RecetteCalculatorComponent}
 ];
 
 @NgModule({

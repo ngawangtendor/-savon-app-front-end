@@ -83,8 +83,8 @@
                 <li class="mt-2"><u><b>Corps gras :</b></u></li>
                 <ul>
                   <div *ngFor="let ligne of recette.ligneIngredients">
-                    <li *ngIf="ligne.ingredient[0]?.estCorpsGras">
-                      {{ ligne.ingredient[0].nom }} : {{
+                    <li *ngIf="ligne.ingredient?.estCorpsGras">
+                      {{ ligne.ingredient?.nom }} : {{
                       ligne.quantite }}g
                     </li>
                   </div>
@@ -92,8 +92,8 @@
                 <li class="mt-2"><u><b>Autre :</b></u></li>
                 <ul>
                   <div *ngFor="let ligne of recette.ligneIngredients">
-                    <li *ngIf="ligne.ingredient[0]?.estCorpsGras == false">
-                      {{ ligne.ingredient[0].nom }} : {{
+                    <li *ngIf="ligne.ingredient?.estCorpsGras == false">
+                      {{ ligne.ingredient?.nom }} : {{
                       ligne.quantite }}g
                     </li>
                   </div>

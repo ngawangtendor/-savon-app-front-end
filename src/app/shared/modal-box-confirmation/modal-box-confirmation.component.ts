@@ -20,6 +20,4 @@ export class ModalBoxConfirmationComponent {
   @Input()
   btnColor: string = "info"; // Valeurs possibles : primary; secondary; success; danger; warning; info; light; dark
   constructor(public activeModal: NgbActiveModal) { }
-
-  
 }

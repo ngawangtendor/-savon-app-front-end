@@ -5,6 +5,6 @@ export class LigneIngredient {
     ligneId: number | null = null;
     quantite : number = 0;
     pourcentage : number = 0;
-    ingredient : Ingredient[] = [];
-    recette : Recette [] = [];
+    ingredientId : number|null =null
+    ingredient:Ingredient|null=null
 }
