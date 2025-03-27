@@ -18,6 +18,7 @@ import { IngredientImportExportComponent } from './shared/ingredient-import-expo
 import { IngredientManagerPageComponent } from './pages/ingredient-manager-page/ingredient-manager-page.component';
 import { ModalBoxConfirmationComponent } from './shared/modal-box-confirmation/modal-box-confirmation.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
+import { RadarChartComponent } from './shared/radar-chart/radar-chart.component';
 
 
 @NgModule({
@@ -34,7 +35,8 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
     IngredientFormComponent,
     IngredientImportExportComponent,
     IngredientManagerPageComponent,
-    ModalBoxConfirmationComponent
+    ModalBoxConfirmationComponent,
+    RadarChartComponent
   ],
   imports: [
     BrowserModule,

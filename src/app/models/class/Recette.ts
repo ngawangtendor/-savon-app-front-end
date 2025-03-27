@@ -1,5 +1,6 @@
 import { LigneIngredient } from "./LigneIngredient";
 import { Resultat } from "./Resultat";
+import { Caracteristique } from "./Caracteristique";
 
 export class Recette {
   id: number | null = null;
@@ -12,6 +13,7 @@ export class Recette {
   qteAlcalin: number = 0;
   ligneIngredients: LigneIngredient[] = [];
   resultats: Resultat[] = [];
+  //caracteristique : Caracteristique[] = [];
 }
 
 

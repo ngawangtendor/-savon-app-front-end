@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-
 import { RecetteService } from '../../services/recette.service';
 import { Recette } from '../../models/class/Recette';
+import { Caracteristique } from '../../models/class/Caracteristique';
+
 
  
 @Component({
@@ -11,6 +12,7 @@ import { Recette } from '../../models/class/Recette';
 })
 export class RecettesComponent implements OnInit {
   recettes : Recette[] = [];
+  caracteristique : Caracteristique[] = []
 
   constructor(private simulateurService:RecetteService ) { }
 
