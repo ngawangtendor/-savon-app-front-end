@@ -4,6 +4,9 @@ import { ModalIngredientPickerComponent } from '../../shared/modal-ingredient-pi
 import { Ingredient } from '../../models/class/Ingredient';
 import { IngredientService } from '../../services/ingredient.service';
 import { LigneIngredient } from '../../models/class/LigneIngredient';
+import { LigneIngredientDTO } from '../../models/DTO/LigneIngredientDTO';
+import { RecetteDTO } from '../../models/DTO/RecetteDTO';
+import { RecetteService } from '../../services/recette.service';
 
 @Component({
   selector: 'app-recette-calculator',
@@ -11,24 +14,27 @@ import { LigneIngredient } from '../../models/class/LigneIngredient';
   styleUrl: './recette-calculator.component.css'
 })
 export class RecetteCalculatorComponent implements OnInit {
-  availableIngredients: Ingredient[] = []; // à alimenter via service
+  // Attributs :
+  // -----------
+  recetteDto: RecetteDTO = new RecetteDTO(); // Objet RecetteDTO de la nouvelle recette
+  availableIngredients: Ingredient[] = []; // A alimenter via service
   selectedIngredients: LigneIngredient[] = []; // Liste des ingrédients sélectionnés
-  
+  totalMasse = 0; // Masse totale des corps gras
+
   constructor(
     private ingredientService: IngredientService,
+    private recetteService: RecetteService,
     private modalService: NgbModal
   ) {}
-  
+
   /**
    * Appel du service de récupération des ingrédients à l'initialisation
    */
   ngOnInit(): void {
     this.loadIngredients();
   }
-  
-  loadIngredients(): void { 
-    // Notez que j'utilise getAllIngredient() car c'est le nom de la méthode
-    // définie dans votre service IngredientService (d'après les documents fournis)
+
+  loadIngredients(): void {
     this.ingredientService.getAllIngredient().subscribe({
       next: (ingredients) => {
         this.availableIngredients = ingredients;
@@ -38,7 +44,7 @@ export class RecetteCalculatorComponent implements OnInit {
       }
     });
   }
-  
+
   /**
    * Modal de sélection des ingrédients.
    */
@@ -52,7 +58,7 @@ export class RecetteCalculatorComponent implements OnInit {
       }
     }).catch(() => {});
   }
-  
+
   /**
    * Méthode d'ajout d'un ingrédient à la recette
    * @param ingredient Ingrédient à ajouter à la recette
@@ -63,21 +69,62 @@ export class RecetteCalculatorComponent implements OnInit {
       return;
     }
     
-    // En me basant sur votre modèle LigneIngredient défini dans les fichiers
     this.selectedIngredients.push({
       ligneId: 0, // valeur temporaire pour l'instant
-      ingredientId: ingredient.id, // Notez que j'utilise un tableau ici basé sur votre modèle
+      ingredientId: ingredient.id,
+      ingredient: ingredient,
       quantite: 0,
-      ingredient:ingredient,
       pourcentage: 0
     });
   }
-  
+
   /**
    * Supprime un ingrédient préalablement choisi pour la recette en cours
    * @param index 
    */
   supprimerIngredient(index: number): void {
     this.selectedIngredients.splice(index, 1);
+    this.recalculerPourcentages();
+  }
+
+  /**
+   * Recalcule les pourcentages
+   */
+  recalculerPourcentages(): void {
+    this.totalMasse = this.selectedIngredients.reduce((acc, ligne) => acc + ligne.quantite, 0); // Somme des masses des ingrédients de la recette
+    
+    this.selectedIngredients.forEach(ligne => {
+      ligne.pourcentage = this.totalMasse > 0 ? + (ligne.quantite / this.totalMasse * 100).toFixed(0) : 0; // Calcul les pourcentages des ingrédients
+    });
+  }
+
+  /**
+   * Méthode de soumission du nouvel ingrédient
+   */
+  onSubmit(): void {
+    // Associer les ingrédients au DTO :
+    const ligneIngredientDTOs = this.selectedIngredients.map(ligne => ({
+      quantite: ligne.quantite,
+      pourcentage: ligne.pourcentage,
+      ingredientId: ligne.ingredientId ?? 0
+    }));
+
+    // Finalisation de l'objet RecetteDTO :
+    const recetteEnvoyee: RecetteDTO = {
+      ...this.recetteDto,
+      ligneIngredients: ligneIngredientDTOs
+    };
+    
+    this.recetteService.addRecette(recetteEnvoyee).subscribe({
+      next: (recette) => {
+        console.log('Recette reçue du backend :', recette);
+        // Redirection ou notification à l'utilisateur
+        alert('Recette créée avec succès !');
+      },
+      error: (err) => {
+        console.error('Erreur lors de la création de la recette :', err);
+        alert('Erreur lors de la création de la recette');
+      }
+    });
   }
 }
