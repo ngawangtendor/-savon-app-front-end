@@ -22,4 +22,20 @@ export class RecettesComponent implements OnInit {
       error: (err) => console.error('Erreur lors du chargement des ingrédients : ', err)
     });
   }
+  deleteRecette(id: number | null): void {
+    if (id === null) return;
+    
+    this.simulateurService.deleteRecette(id).subscribe({
+      next: () => {
+        // Supprimer la recette de la liste locale après suppression réussie
+        this.recettes = this.recettes.filter(recette => recette.id !== id);
+        // Optionnel: afficher un message de confirmation
+        alert('Recette supprimée avec succès');
+      },
+      error: (err) => {
+        console.error('Erreur lors de la suppression de la recette:', err);
+        alert('Erreur lors de la suppression de la recette');
+      }
+    });
+  }
 }
